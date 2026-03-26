@@ -71,6 +71,8 @@ Underage:
 blitzkrieg - when take dmg move speed up
 mudinvincible - immune to mud debuffs but reduced total move speed
 adrenaline - minor wounds less bad major wounds much worse, adds permenant scarring
+spotter - more vision but less gun accuracy
+packmule - more inv capacity but move slower
 Cigarette Addict:
     War is hell. Healthy coping mechanisms are in short supply. You've grown reliant on Nicotine.
     When craving Nicotine, you have a 20% accuracy debuff and hunger drains 30% faster. When not craving Nicotine, gain +1 perception range. Gain a permenant Nicotine addiction.
