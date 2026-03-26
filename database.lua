@@ -1,6 +1,6 @@
 local player = { -- base stats, is changed during gameplay but not permenantly (no file:write)
     status={
-        body_parts = { -- HP out of 440 (based on tarkov)
+        body_parts = { -- HP out of 440 (based on tarkov, also cant see this directly)
             head = 35,
             thorax = 85,
             stomach = 70,
@@ -70,6 +70,7 @@ Underage:
     You have a permenant mental health boost and you require 15% less rations. Your carry capacity is reduced by 20%, you are +30% succeptable to addictions, and you take +10% damage.
 blitzkrieg - when take dmg move speed up
 mudinvincible - immune to mud debuffs but reduced total move speed
+adrenaline - minor wounds less bad major wounds much worse, adds permenant scarring
 Cigarette Addict:
     War is hell. Healthy coping mechanisms are in short supply. You've grown reliant on Nicotine.
     When craving Nicotine, you have a 20% accuracy debuff and hunger drains 30% faster. When not craving Nicotine, gain +1 perception range. Gain a permenant Nicotine addiction.
@@ -79,7 +80,10 @@ Alcohol Addict:
 
 ]] -- Underage gives a permenant +19% mood buff. The exact numbers are never shown to the player. 0-20% is worst, 21-40% is second worst.
 }
-local class_specific_dialogue = {}
+local dialogue = {
+    class_specific = {},
+    general = {}
+}
 if arg1 == "introduction" then
     return introduction[tostring("step"..arg2)]
 end
