@@ -56,7 +56,9 @@ Raider:
 Medic:
     Medical specialist. Issued with a handgun and basic medical equipment.
 Officer:
-    High ranking commander. Has a whistle for rallying troops and a handgun.]],
+    High ranking commander. Has a whistle for rallying troops and a sabre.
+Spotter:
+    Artillery fire director. Assigned a radio backpack and a handgun.]],
 step2 = [[
 Select two or more perks.
 Scav:
@@ -68,11 +70,15 @@ Insomniac:
 Underage:
     Eager for the supposed spoils and glory of war, you did whatever you could to join the military. You lied on your recruitment papers.
     You have a permenant mental health boost and you require 15% less rations. Your carry capacity is reduced by 20%, you are +30% succeptable to addictions, and you take +10% damage.
-blitzkrieg - when take dmg move speed up
-mudinvincible - immune to mud debuffs but reduced total move speed
-adrenaline - minor wounds less bad major wounds much worse, adds permenant scarring
-spotter - more vision but less gun accuracy
-packmule - more inv capacity but move slower
+Flat Footed:
+    A hereditary condition. Your flat feet help against the sea of mud. You cannot run like the others.
+    Immune to terrain move debuffs like mud. You only have 80% base movement speed. Injuries to the legs take much longer to heal.
+Immunocomprimised:
+    You got sick. Very sick. The scars of the disease still haunt you. Now your either variolated and recover quickly, or completely crippled until the sickness burns through you.
+    Infections give permenant scarring. +40% infection chance, but +25% wound healing speed if not infected.
+Pack Mule:
+    Your hoarding has led to a compulsion to collect what you find. Your back has grown stronger, but your legs struggle against the strain.
+    Carry capacity is increased 20% and containers have increased capacity. Base movement speed is 70%.
 Cigarette Addict:
     War is hell. Healthy coping mechanisms are in short supply. You've grown reliant on Nicotine.
     When craving Nicotine, you have a 20% accuracy debuff and hunger drains 30% faster. When not craving Nicotine, gain +1 perception range. Gain a permenant Nicotine addiction.
