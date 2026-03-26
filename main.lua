@@ -3,6 +3,7 @@ local database = assert(loadfile("database.lua"))
 local to_save = nil
 local file = nil
 local input = nil
+local amount_of_perks = 0
 local function save_write(save_location, data)
     file = io.open("savefile", "a+")
     to_save = file:read("*all")
