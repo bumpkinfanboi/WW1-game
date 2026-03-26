@@ -1,2 +1,4 @@
 
-{class = Raider}
+{class = Officer}
+{perk = Underage} 
+ {perk = Flat_Footed}

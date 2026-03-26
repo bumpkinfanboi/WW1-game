@@ -84,9 +84,7 @@ Cigarette Addict:
     When craving Nicotine, you have a 20% accuracy debuff and hunger drains 30% faster. When not craving Nicotine, gain +1 perception range. Gain a permenant Nicotine addiction.
 Alcohol Addict:
     You hate it here. Everything gives you nightmares. Alcohol stops the bad thoughts.
-    When not on Alcohol, your mental health drains 5% per hour. Alcohol's positive effect on your mood is doubled. Gain a permenant Alcohol addiction.
-
-]] -- Underage gives a permenant +19% mood buff. The exact numbers are never shown to the player. 0-20% is worst, 21-40% is second worst.
+    When not on Alcohol, your mental health drains 5% per hour. Alcohol's positive effect on your mood is doubled. Gain a permenant Alcohol addiction.]] -- Underage gives a permenant +19% mood buff. The exact numbers are never shown to the player. 0-20% is worst, 21-40% is second worst.
 }
 local dialogue = {
     class_specific = {},
