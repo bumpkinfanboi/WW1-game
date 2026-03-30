@@ -1,18 +1,19 @@
 require("database")
 local database = assert(loadfile("database.lua"))
-local to_save = nil
+local old_save = nil
 local to_add_to_save = nil
 local file = nil
 local input = nil
 local amount_of_perks = 0
+
+file = io.open("savefile", "r")
+old_save = file:read("*all")
+file:close()
 local function save_write(save_location, data)
-    file = io.open("savefile", "a+")
-    to_save = file:read("*all") -- this overwrites tosave every time it runs, therefore causing it to overwrite itself
-    file:close()
-    if save_location == "class" then
-        if string.find(to_save, "class") then
-            to_save = string.gsub(to_save, "{class = %a+}", "{class = "..data.."}")
-        else to_save = to_save.."{class = "..data.."}\n"
+    if save_location == "class" then -- TODO: make this use to_add_to_save instead of manipulating old_save.
+        if string.find(old_save, "class") then
+            old_save = string.gsub(old_save, "{class = %a+}", "{class = "..data.."}")
+        else old_save = old_save.."{class = "..data.."}\n"
         end
     end
     if save_location == "perk" then
@@ -26,10 +27,10 @@ local function save_write(save_location, data)
 end
 
 local function save_game()
-    if to_save == nil then print("Nothing to save!") return end
-    print(to_save.."finalsave")
+    if old_save == nil then print("Nothing to save!") return end
+    print(old_save.."finalsave")
     file = io.open("savefile", "w+")
-    file:write(to_save.."\n"..to_add_to_save)
+    file:write(old_save.."\n"..to_add_to_save)
     file:close()
     print("Saved!")
 end
