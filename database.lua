@@ -76,6 +76,12 @@ Flat_Footed:
 Immunocomprimised:
     You got sick. Very sick. The scars of the disease still haunt you. Now your either variolated and recover quickly, or completely crippled until the sickness burns through you.
     Infections give permenant scarring. +40% infection chance, but +25% wound healing speed if not infected.
+Institutionalized:
+    They saw you as diseased. They locked you away from society, chained and starved. They never truly broke you.
+    10% morale boost, +15% melee hit chance, but you start without a weapon.
+Far_Sighted:
+    Spending your days watching birds, you can't see up close as well as you used to.
+    -20% melee hit chance, +10% accuracy.
 Pack_Mule:
     Your hoarding has led to a compulsion to collect what you find. Your back has grown stronger, but your legs struggle against the strain.
     Carry capacity is increased 20% and containers have increased capacity. Base movement speed is 70%.

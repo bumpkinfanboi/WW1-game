@@ -1,7 +1,6 @@
 require("database")
 local database = assert(loadfile("database.lua"))
 local old_save = nil
-local to_add_to_save = nil
 local file = nil
 local input = nil
 local amount_of_perks = 0
@@ -10,19 +9,19 @@ file = io.open("savefile", "r")
 old_save = file:read("*all")
 file:close()
 local function save_write(save_location, data)
-    if save_location == "class" then -- TODO: make this use to_add_to_save instead of manipulating old_save.
+    if save_location == "class" then -- TODO: make this use old_save instead of manipulating old_save.
         if string.find(old_save, "class") then
             old_save = string.gsub(old_save, "{class = %a+}", "{class = "..data.."}")
         else old_save = old_save.."{class = "..data.."}\n"
         end
     end
     if save_location == "perk" then
-        if to_add_to_save == nil then  -- spite fix
-            to_add_to_save = "{perk "..amount_of_perks.." = "..data.."}\n"
+        if old_save == nil then  -- spite fix
+            old_save = "{perk "..amount_of_perks.." = "..data.."}\n"
         else
-        to_add_to_save = to_add_to_save .. "{perk "..amount_of_perks.." = "..data.."}\n"
+        old_save = old_save .. "{perk "..amount_of_perks.." = "..data.."}\n"
         end
-        print(to_add_to_save)
+        print(old_save)
     end
 end
 
@@ -30,7 +29,7 @@ local function save_game()
     if old_save == nil then print("Nothing to save!") return end
     print(old_save.."finalsave")
     file = io.open("savefile", "w+")
-    file:write(old_save.."\n"..to_add_to_save)
+    file:write(old_save.."\n")
     file:close()
     print("Saved!")
 end
@@ -40,6 +39,8 @@ local perks = {
     Underage = false,
     Flat_Footed = false,
     Immunocomprimised = false,
+    Institutionalized = false,
+    Far_Sighted = false,
     Pack_Mule = false,
     Cigarette_Addict = false,
     Alcohol_Addict = false,
@@ -54,34 +55,54 @@ local function select_perks()
                 save_write("perk", k)
             end
         end
-        if input == "quit" then break end
+        if input == "confirm" then
+            if amount_of_perks >= 2 then 
+                print("confirmed!")
+                save_game()
+                break
+            else print("not enough perks!") end
+        end
+        if input == "quit" then
+            save_game()
+            print("quitting!")
+            os.exit()
+        end
     end
 end
 
-local function create_character()
-    print(database("introduction", 1))
-    print('Type "back" to return.')
+local function select_class()
     while true do
         input = io.read()
         if input == "back" then print("Returning to main") break end -- quits back to game_loop() 
         if input == "quit" then
             save_game()
+            print("quitting!")
             os.exit()
         end
         if input == "Rifleman" then -- start of step 1
             save_write("class", "Rifleman")
+            return
         elseif input == "Raider" then
             save_write("class", "Raider")
+            return
         elseif input == "Medic" then
             save_write("class", "Medic")
+            return
         elseif input == "Officer" then
             save_write("class", "Officer")
+            return
         elseif input == "Spotter" then
             save_write("class", "Spotter")
+            return
         else print("Not a class.") end
-        print(database("introduction", 2))-- start of step 2
-        select_perks()
     end
+end
+local function create_character()
+    print(database("introduction", 1))
+    print('Type "back" to return.')
+    select_class()
+    print(database("introduction", 2))-- start of step 2
+    select_perks()
 end
 
 local function game_loop()
