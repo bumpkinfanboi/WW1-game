@@ -46,7 +46,7 @@ local maps = { -- TODO: use this somewhere to shut up luachecker
     types_of_trench = {"T", "B", "D", "H", "C"} -- Trench (basic), Bunker [entrance], Dugout, Howitzer, Canteen
 }
 local arg1, arg2, arg3 = ... -- shut up i know some are unused luachecker (btw all files are run thru luachecker)
-local introduction = {
+local introduction = { -- im so sorry in advance but ASCII art just looks cool, okay? ;~;
 step1 = [[
 Select a class.
 Rifleman:

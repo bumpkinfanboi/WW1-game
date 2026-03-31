@@ -104,7 +104,11 @@ local function create_character()
     --select_difficulty()
     --if difficulty == "custom" then print(database("introduction", 4)) create_custom_difficulty()
     print(database("introduction", 5))
-    print(database("introduction", 6))
+    print("Show image? Requires at least 200-character-wide display. Input 'confirm' to proceed.")
+    input = io.read()
+    if input == "confirm" then
+        print(database("introduction", 6))
+    end
 end
 
 local function game_loop()
