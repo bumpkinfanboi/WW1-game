@@ -103,6 +103,8 @@ local function create_character()
     --print(database("introduction", 3)) -- TODO: add difficulties and custom options for difficulties
     --select_difficulty()
     --if difficulty == "custom" then print(database("introduction", 4)) create_custom_difficulty()
+    print(database("introduction", 5))
+    print(database("introduction", 6))
 end
 
 local function game_loop()
