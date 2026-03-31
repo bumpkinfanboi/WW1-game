@@ -1,12 +1,10 @@
 require("database")
 local database = assert(loadfile("database.lua"))
-local old_save = nil
-local file = nil
 local input = nil
 local amount_of_perks = 0
 
-file = io.open("savefile", "r")
-old_save = file:read("*all")
+local file = io.open("savefile", "r")
+local old_save = file:read("*all")
 file:close()
 local function save_write(save_location, data)
     if save_location == "class" then -- TODO: make this use old_save instead of manipulating old_save.
@@ -56,7 +54,7 @@ local function select_perks()
             end
         end
         if input == "confirm" then
-            if amount_of_perks >= 2 then 
+            if amount_of_perks >= 2 then
                 print("confirmed!")
                 save_game()
                 break
@@ -73,7 +71,7 @@ end
 local function select_class()
     while true do
         input = io.read()
-        if input == "back" then print("Returning to main") break end -- quits back to game_loop() 
+        if input == "back" then print("Returning to main") break end -- quits back to game_loop()
         if input == "quit" then
             print("quitting!")
             os.exit()
