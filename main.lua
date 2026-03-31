@@ -75,7 +75,6 @@ local function select_class()
         input = io.read()
         if input == "back" then print("Returning to main") break end -- quits back to game_loop() 
         if input == "quit" then
-            save_game()
             print("quitting!")
             os.exit()
         end
@@ -101,8 +100,11 @@ local function create_character()
     print(database("introduction", 1))
     print('Type "back" to return.')
     select_class()
-    print(database("introduction", 2))-- start of step 2
+    print(database("introduction", 2))
     select_perks()
+    --print(database("introduction", 3)) -- TODO: add difficulties and custom options for difficulties
+    --select_difficulty()
+    --if difficulty == "custom" then print(database("introduction", 4)) create_custom_difficulty()
 end
 
 local function game_loop()
