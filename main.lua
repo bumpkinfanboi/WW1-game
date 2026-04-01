@@ -3,7 +3,7 @@ local database = assert(loadfile("database.lua"))
 local input = nil
 local amount_of_perks = 0
 
-local file = io.open("savefile", "r")
+local file = io.open("savefile", "a+")
 local old_save = file:read("*all")
 file:close()
 local function save_write(save_location, data)
@@ -38,25 +38,13 @@ local function save_game()
     print("Saved!")
 end
 
-local perks = {
-    Scav = false,
-    Insomniac = false,
-    Underage = false,
-    Flat_Footed = false,
-    Immunocomprimised = false,
-    Institutionalized = false,
-    Far_Sighted = false,
-    Pack_Mule = false,
-    Cigarette_Addict = false,
-    Alcohol_Addict = false,
-}
 local function select_perks()
     while true do
         input = io.read()
-        for k, v in pairs(perks) do
+        for k, v in pairs(database("perks")) do
             if input == k then
                 amount_of_perks = amount_of_perks + 1
-                perks[k] = true
+                database("perks")[k] = true
                 save_write("perk", k)
             end
         end
@@ -133,19 +121,36 @@ local function create_character()
     print(database("introduction", 3)) -- TODO: add difficulties and custom options for difficulties
     select_difficulty()
     -- if difficulty == "custom" then print(database("introduction", 4))
-    --create_custom_difficulty() end
+    -- create_custom_difficulty() end
     print(database("introduction", 5))
     print("Show image? Requires at least 200-character-wide display. Input 'confirm' to proceed.")
     input = io.read()
     if input == "confirm" then
         print(database("introduction", 6))
     else print("Image skipped.") end
+    print("Character complete!")
+end
+
+local function create_world()
+-- TODO: create a randomized map of the trenches
 end
 
 local function game_loop()
+-- TODO: core game loop (the hard part)
+end
+local function game_start()
     while true do
         input = io.read()
-        if input == "start" then create_character()
+        if input == "start" then
+            os.remove("savefile")
+            old_save = ""
+            create_character()
+            create_world()
+            game_loop()
+            break
+        elseif input == "continue" then
+            game_loop()
+            break
         elseif input == "quit" then
             print("Saving!")
             save_game()
@@ -153,4 +158,4 @@ local function game_loop()
         end
     end
 end
-game_loop()
+game_start()

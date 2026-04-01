@@ -198,6 +198,18 @@ step6 = [[
 +++++======+++++*#######%%#%#*+++*++*++++++#+==+==++=*======+++==++=++++++=+==**#*#######**##%#%%#%%#%%%%%%%%%%%%%%%%%@%##%#***++++*#***+=+*++*=++=+++*+++++*+=**=*==+*+==+++*+*=#+=+*+*=**%*+++=+=+*+=+
 ]]
 }
+local perks = {
+    Scav = false,
+    Insomniac = false,
+    Underage = false,
+    Flat_Footed = false,
+    Immunocomprimised = false,
+    Institutionalized = false,
+    Far_Sighted = false,
+    Pack_Mule = false,
+    Cigarette_Addict = false,
+    Alcohol_Addict = false,
+}
 local dialogue = {
     class_specific = {},
     general = {}
@@ -207,4 +219,7 @@ if arg1 == "introduction" then
 end
 if arg1 == "player" then
     return player
+end
+if arg1 == "perks" then
+    return perks
 end
