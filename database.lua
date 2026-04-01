@@ -39,12 +39,6 @@ local player = { -- base stats, is changed during gameplay but not permenantly (
         inventory_weight_max = 70,
     },
 }
-local maps = { -- TODO: use this somewhere to shut up luachecker
-    trenches = {},
-    dugouts = {},
-    bunkers = {},
-    types_of_trench = {"T", "B", "D", "H", "C"} -- Trench (basic), Bunker [entrance], Dugout, Howitzer, Canteen
-}
 local arg1, arg2, arg3 = ... -- shut up i know some are unused luachecker (btw all files are run thru luachecker)
 local introduction = { -- im so sorry in advance but ASCII art just looks cool, okay? ;~;
 step1 = [[

@@ -1,5 +1,7 @@
 require("database")
+require("world_generator")
 local database = assert(loadfile("database.lua"))
+local world_generator = assert(loadfile("world_generator.lua"))
 local input = nil
 local amount_of_perks = 0
 
@@ -131,8 +133,8 @@ local function create_character()
     print("Character complete!")
 end
 
-local function create_world()
--- TODO: create a randomized map of the trenches
+local function create_world() -- TODO: uh... how the fuck am I going to do this??
+    world_generator("game_start")
 end
 
 local function game_loop()
