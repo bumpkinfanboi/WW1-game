@@ -21,6 +21,12 @@ local function save_write(save_location, data)
         end
         print(old_save)
     end
+    if save_location == "difficulty" then
+        if string.find(old_save, "difficulty") then
+            old_save = string.gsub(old_save, "{difficulty = %a+}", "{difficulty = "..data.."}")
+        else old_save = old_save.."{difficulty = "..data.."}\n"
+        end
+    end
 end
 
 local function save_game()
@@ -31,6 +37,7 @@ local function save_game()
     file:close()
     print("Saved!")
 end
+
 local perks = {
     Scav = false,
     Insomniac = false,
@@ -95,7 +102,26 @@ local function select_class()
 end
 
 local function select_difficulty()
-    
+    while true do
+        input = io.read()
+        if input == "back" then print("Returning to main") break end
+        if input == "quit" then
+            print("quitting")
+            os.exit()
+        end
+        if input == "Easy" then
+            save_write("difficulty", "easy")
+            return
+        elseif input == "Medium" then
+            save_write("difficulty", "medium")
+            return
+        elseif input == "Hard" then
+            save_write("difficulty", "hard")
+            return
+        elseif input == "Custom" then
+            print("NOT IMPLEMENTED YET") -- TODO: add custom difficulty
+        else print("Not an option.") end
+    end
 end
 
 local function create_character()
