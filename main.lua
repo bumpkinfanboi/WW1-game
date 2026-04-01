@@ -7,14 +7,14 @@ local file = io.open("savefile", "r")
 local old_save = file:read("*all")
 file:close()
 local function save_write(save_location, data)
-    if save_location == "class" then -- TODO: make this use old_save instead of manipulating old_save.
+    if save_location == "class" then
         if string.find(old_save, "class") then
             old_save = string.gsub(old_save, "{class = %a+}", "{class = "..data.."}")
         else old_save = old_save.."{class = "..data.."}\n"
         end
     end
     if save_location == "perk" then
-        if old_save == nil then  -- spite fix
+        if old_save == nil then
             old_save = "{perk "..amount_of_perks.." = "..data.."}\n"
         else
         old_save = old_save .. "{perk "..amount_of_perks.." = "..data.."}\n"
@@ -61,7 +61,6 @@ local function select_perks()
             else print("not enough perks!") end
         end
         if input == "quit" then
-            save_game()
             print("quitting!")
             os.exit()
         end
@@ -94,21 +93,27 @@ local function select_class()
         else print("Not a class.") end
     end
 end
+
+local function select_difficulty()
+    
+end
+
 local function create_character()
     print(database("introduction", 1))
     print('Type "back" to return.')
     select_class()
     print(database("introduction", 2))
     select_perks()
-    --print(database("introduction", 3)) -- TODO: add difficulties and custom options for difficulties
-    --select_difficulty()
-    --if difficulty == "custom" then print(database("introduction", 4)) create_custom_difficulty()
+    print(database("introduction", 3)) -- TODO: add difficulties and custom options for difficulties
+    select_difficulty()
+    -- if difficulty == "custom" then print(database("introduction", 4))
+    --create_custom_difficulty() end
     print(database("introduction", 5))
     print("Show image? Requires at least 200-character-wide display. Input 'confirm' to proceed.")
     input = io.read()
     if input == "confirm" then
         print(database("introduction", 6))
-    end
+    else print("Image skipped.") end
 end
 
 local function game_loop()

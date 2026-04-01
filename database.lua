@@ -100,7 +100,7 @@ Medium:
 Hard:
     insert difficulty settings
 Custom:
-    ]], -- TODO: all of this
+    NOT IMPLEMENTED YET]],
 step4 = [[
 add custom options for difficulty]],
 step5 = [[
