@@ -133,8 +133,15 @@ local function create_character()
     print("Character complete!")
 end
 
+local function display(to_display) -- TODO: this print doesnt work because the image is flipped, printing the (x,y) as (y,x)
+    for i=1, #to_display.room do
+        print(table.concat(to_display.room[i]))
+    end
+end
+
 local function create_world() -- TODO: uh... how the fuck am I going to do this??
-    world_generator("game_start")
+    to_display = world_generator("game_start")
+    display(to_display)
 end
 
 local function game_loop()
