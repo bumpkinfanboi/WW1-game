@@ -133,10 +133,10 @@ local function create_character()
     print("Character complete!")
 end
 local display_string = ""
-local function display(to_display)
-    for i=1, to_display.height do
-        for j=1, to_display.width do
-            display_string = display_string .. to_display.room_data[j][i]
+local function display(starting_positions)
+    for i=1, starting_positions.height do
+        for j=1, starting_positions.width do
+            display_string = display_string .. starting_positions.room_data[j][i]
         end
         print(display_string)
         display_string = ""
@@ -144,12 +144,11 @@ local function display(to_display)
 end
 
 local function create_world() -- TODO: uh... how the fuck am I going to do this??
-    to_display = world_generator("game_start")
-    display(to_display)
+    starting_positions = world_generator("game_start")
+    display(starting_positions)
 end
 
 local function game_loop()
--- TODO: core game loop (the hard part)
 end
 local function game_start()
     while true do

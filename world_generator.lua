@@ -44,11 +44,11 @@ if arg1 == "game_start" then
     generate_walls()
     room[player_position.x][player_position.y] = "P"
     print(#room)
-    to_display = {
+    starting_positions = {
         player_position = player_position,
         room_data = room,
         width = width,
         height = height/width,
     }
-    return to_display
+    return starting_positions
 end
