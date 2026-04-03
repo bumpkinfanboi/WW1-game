@@ -136,7 +136,7 @@ local display_string = ""
 local function display(to_display)
     for i=1, to_display.height do
         for j=1, to_display.width do
-            display_string = display_string .. to_display.room[j][i]
+            display_string = display_string .. to_display.room_data[j][i]
         end
         print(display_string)
         display_string = ""

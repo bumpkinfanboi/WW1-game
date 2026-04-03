@@ -17,6 +17,16 @@ local room = {}
 local to_display = {}
 local width = 0
 local height = 0
+function generate_walls()
+    for i=1, maps.friendly_trenches.starter_bunker.size.width do
+        room[i][1] = "#"
+        room[i][maps.friendly_trenches.starter_bunker.size.height] = "#"
+    end
+    for i=1, maps.friendly_trenches.starter_bunker.size.height do
+        room[1][i] = "#"
+        room[maps.friendly_trenches.starter_bunker.size.width][i] = "#"
+    end
+end
 if arg1 == "game_start" then
     player_position = {
         map = "starter_bunker",
@@ -31,6 +41,7 @@ if arg1 == "game_start" then
             height = height+1
         end
     end
+    generate_walls()
     room[player_position.x][player_position.y] = "P"
     print(#room)
     to_display = {
