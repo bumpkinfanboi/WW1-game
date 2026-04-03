@@ -132,10 +132,14 @@ local function create_character()
     else print("Image skipped.") end
     print("Character complete!")
 end
-
-local function display(to_display) -- TODO: this print doesnt work because the image is flipped, printing the (x,y) as (y,x)
-    for i=1, #to_display.room do
-        print(table.concat(to_display.room[i]))
+local display_string = ""
+local function display(to_display)
+    for i=1, to_display.height do
+        for j=1, to_display.width do
+            display_string = display_string .. to_display.room[j][i]
+        end
+        print(display_string)
+        display_string = ""
     end
 end
 
